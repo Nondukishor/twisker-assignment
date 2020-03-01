@@ -1,0 +1,16 @@
+{
+  "name": "news-feed",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "cd server && adonis serve --dev",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "mysql": "^2.18.1",
+    "react-icons": "^3.9.0"
+  }
+}

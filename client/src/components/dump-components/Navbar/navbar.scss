@@ -1,0 +1,31 @@
+.navbar-white{
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+    .nav .navbar-nav li a{
+        color: #000000 !important;
+    }
+}
+
+.bg-white{
+    background-color: #ffffff;
+    color: black;
+}
+
+.has-search .form-control {
+    padding-left:  1.375rem;
+}
+
+.has-search .form-control-feedback{
+    position: absolute;
+    z-index: 1;
+    display: block;
+    width:  1.375rem;
+    height: 1.375rem;
+    line-height:1.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+
