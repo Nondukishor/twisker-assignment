@@ -103,11 +103,13 @@ class CommentController {
   async destroy ({ params, response }) {
     try {
       const comment = await Comment.find(params.id)
-      return response.status(200).json({
-        success:true,
-        type:'success',
-        message:"Deleted Successfully"
-      })
+      const commentDelete =await comment.delete()
+     if(commentDelete)
+        return response.status(200).json({
+            success:true,
+            type:'success',
+            message:"Deleted Successfully"
+        })
     } catch (error) {
       return response.status(500).json({
         success:false,
