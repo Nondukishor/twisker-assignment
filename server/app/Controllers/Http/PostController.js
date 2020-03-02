@@ -33,7 +33,7 @@ class PostController {
         group_id,
         title,
         due_date:new Date(Date.parse(due_date)),
-        post:JSON.stringify(post),
+        post:JSON.stringify(post),//post type json because post has multiple data type like picture, file and also bullet point post
         post_type
       })
       if(posts){
@@ -54,50 +54,76 @@ class PostController {
     }
   }
 
-  /**
-   * Display a single post.
-   * GET posts/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show ({ params, request, response, view }) {
+
+  async show ({ params, response}) {
+    try {
+      const post = await Post.find(params.id)
+      return response.status(200).json({
+        success:true,
+        type:'success',
+        message:'Showed',
+        data:post
+      })
+    } catch (error) {
+      return response.status(500).json({
+        success:false,
+        type:'danger',
+        message:'Server Error'
+      })
+    }
   }
 
-  /**
-   * Render a form to update an existing post.
-   * GET posts/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
+ 
+  async edit ({ params, response}) {
+    try {
+      const post = await Post.find(params.id)
+      return response.status(200).json({
+        success:true,
+        type:"success",
+        message:"Post showing",
+        data:post
+      })
+    } catch (error) {
+      return response.status(500).json({
+        success:false,
+        type:'danger',
+        message:'Server Error'
+      })
+    }
   }
 
-  /**
-   * Update post details.
-   * PUT or PATCH posts/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update ({ params, request, response }) {
+  async update ({ params,response}) {
+    try {
+      const post = await Post.query().where('id',params.id).update({
+        author_id,
+        group_id,
+        title,
+        due_date:new Date(Date.parse(due_date)),
+        post:JSON.stringify(post),
+        post_type
+      })
+    } catch (error) {
+      
+    }
   }
 
-  /**
-   * Delete a post with id.
-   * DELETE posts/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
+
   async destroy ({ params, request, response }) {
+    try {
+      const post = await Post.find(params.id)
+                   await post.delete()
+      return response.status(200).json({
+        success:true,
+        type:"success",
+        message:"Post deleted Successfully"
+      })
+    } catch (error) {
+      return response.status(500).json({
+        success:false,
+        type:'danger',
+        message:'Server Error'
+      })
+    }
   }
 }
 

@@ -16,6 +16,9 @@ class Post extends Model {
     comments(){
         return this.hasMany('App/Models/Comment','id','commenter_id')
     }
+    replies(){
+        return this.hasMany('App/Models/Reply','id','replier_id')
+    }
 }
 
 module.exports = Post

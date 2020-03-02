@@ -6,15 +6,7 @@ const Logger = use('Logger')
  * Resourceful controller for interacting with users
  */
 class UserController {
-  /**
-   * Show a list of all users.
-   * GET users
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
+
   async index ({response}) {
     try {
       const user = await User.all()
@@ -36,14 +28,6 @@ class UserController {
 
  
  
-  /**
-   * Create/save a new user.
-   * POST users
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
   async registration({ request, response }) {
     const {username,email,password} = request.all()
     try {

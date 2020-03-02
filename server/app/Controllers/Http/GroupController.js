@@ -1,12 +1,15 @@
 'use strict'
-const group = use('App/Models/Group')
+const Group = use('App/Models/Group')
+
 class GroupController {
+
     async index({request,response}){
-    try {
-    
-    } catch (error) {
-        
-    }
+        try {
+            const group = await Group.query().with('members').with('posts').fetch()
+
+        } catch (error) {
+            
+        }
     }
 }
 
