@@ -4,12 +4,11 @@ import {Form, Container, Row, Col,Button, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import {LOGIN} from '../../redux/actions/AuthActions';
-
 import '../assets/scss/user.scss';
 const Login = (props) => {
 
     const { register, handleSubmit,errors } = useForm()
-    const {login,token,error} = props;
+    const {login,error} = props;
     const onSubmit = data =>login(data)
 
     return (

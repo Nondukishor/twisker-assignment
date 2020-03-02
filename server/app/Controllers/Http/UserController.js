@@ -49,18 +49,33 @@ class UserController {
 
 
   async login({request,response,auth}){
-    const {email,password,refreshToken} = request.all()
+    const {email,password} = request.all()
     try {
       const token = await auth.withRefreshToken().attempt(email, password)
       if(token){
+        const user = await User.findBy('email',email)
         return response.status(200).json({
           success:true,
           type:"success",
           message:"Login successfully",
-          data:token
+          data: await auth.withRefreshToken().generate(user, true)
         })
-      }else{
-       const loginWithRefreshToken = await auth.generateForRefreshToken(refreshToken)
+      }
+    } catch (error) {
+      Logger.error(error)
+      return response.status(500).json({
+        success:false,
+        type:'danger',
+        message:'Cannot find user with email as '+email
+      })
+    }
+  }
+
+  async loginWithRefreshToken({auth,response,request}){
+    const {refreshToken} = request.post()
+    console.log(refreshToken)
+    try {
+      const loginWithRefreshToken = await auth.generateForRefreshToken(refreshToken,true)
        if(loginWithRefreshToken){
         return response.status(200).json({
           success:true,
@@ -69,14 +84,11 @@ class UserController {
           data:loginWithRefreshToken
         })
        }
-      }
-     
     } catch (error) {
-      Logger.error(error)
       return response.status(500).json({
         success:false,
         type:'danger',
-        message:'Cannot find user with email as '+email
+        message:"server error",
       })
     }
   }

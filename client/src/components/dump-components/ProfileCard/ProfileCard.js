@@ -9,29 +9,28 @@ const ProfileCard = () => {
     <Image roundedCircle src={profile} height="100px" width="100px" />
     </div>
     <Card.Body>
-        <Card.Text>
         <Card.Title className="text-center">Enddy Williamson</Card.Title>
-        <p className="text-center">@eddy.w02</p>
-        <p className="text-center"><FaHtml5/> Frontend Engr</p>
-        <p className="text-center"><FaMapMarkerAlt/> San Francisco</p>
-        <div className="text-center">
-            <Button variant="outline-info">Follow</Button>
-        </div>
-        <hr/>
         <div>
-         <strong><FaUserFriends/> Organization</strong>
-         <li>Twisker</li>
-         <li>Freecodecamp</li>
-        </div>
+            <div className="text-center">@eddy.w02</div>
+            <div className="text-center"><FaHtml5/> Frontend Engr</div>
+            <div className="text-center"><FaMapMarkerAlt/> San Francisco</div>
+            <div className="text-center">
+                <Button variant="outline-info">Follow</Button>
+            </div>
         <hr/>
-        <strong><FaUserFriends/> Groups</strong>
-        <li>Twisker/dev</li>
-        <li>Twisker/sales</li>
-        <li>Twisker/Org</li>
-        <li>Twisker/design</li>
-        <a href="#!">More...</a>
-    </Card.Text>
-        
+            <div>
+                <strong><FaUserFriends/> Organization</strong>
+                <li>Twisker</li>
+                <li>Freecodecamp</li>
+            </div>
+        <hr/>
+        <strong><FaUserFriends/>Groups</strong>
+            <li>Twisker/dev</li>
+            <li>Twisker/sales</li>
+            <li>Twisker/Org</li>
+            <li>Twisker/design</li>
+            <a href="#!">More...</a>
+      </div>
      </Card.Body>
     </Card>
     );

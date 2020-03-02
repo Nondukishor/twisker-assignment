@@ -12,18 +12,6 @@ const config=[
         component:Home
     },
     {
-        path:'/login',
-        component:Login
-    },
-    {
-        path:'/registration',
-        component:Registration
-    },
-    {
-        path:'/forgot-password',
-        component:Forgotpassword
-    },
-    {
         path:'/profile',
         component:Profile
     },
@@ -36,5 +24,29 @@ const config=[
         component:Groups
     }
 ]
+
+
+const authRoutes =[
+    {
+        path:'/login',
+        component:Login
+    },
+    {
+        path:'/registration',
+        component:Registration
+    },
+    {
+        path:'/forgot-password',
+        component:Forgotpassword
+    },
+]
+
+
+
+
+config.push(...authRoutes)
+
+
+
 
 export default config;

@@ -19,6 +19,12 @@ class API{
     get CREATE_POST(){
         return `${this.api}/posts`
     }
+    get LOGOUT(){
+        return `${this.api}/logout`
+    }
+    get GET_TOKEN_WITH_REFRESH_TOKEN(){
+        return `${this.api}/refresh-token`
+    }
 
 
 }

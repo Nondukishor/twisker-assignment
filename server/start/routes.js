@@ -24,10 +24,12 @@ Route.get('/',({response})=>response.status(200).json({
 Route.group(()=>{
   Route.post('/registration','UserController.registration').validator('Registration')
   Route.post('/login','UserController.login').validator('Login')
+  Route.post('/refresh-token','UserController.loginWithRefreshToken')
 }).prefix('api')
 
 Route.group(()=>{
   Route.get('/members','UserController.index')
+  Route.post('/logout','UserController.logout')
   Route.resource('/posts','PostController')
   Route.resource('/comments','CommentController')
   Route.resource('/reply','ReplayController')

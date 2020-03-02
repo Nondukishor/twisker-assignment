@@ -5,12 +5,18 @@ import API_URL from '../../app/routes/Api';
 
 export const LOGIN = (data) => dispatch=> {
     axios.post(API_URL.LOGIN,data).then(res=>{
-        dispatch({type:Types.LOGIN,payload:res.data.data})
-        dispatch({type:Types.LOGIN_SUCCESS,payload:res.data})
-        return dispatch(emptyMessage({
+        dispatch({
+            type:Types.LOGIN,
+            payload:res.data.data
+        })
+        dispatch({
+            type:Types.LOGIN_SUCCESS,
+            payload:res.data
+        })
+        dispatch(emptyMessage({
             type:Types.EMPTY_USER_SUCCESS,
-            payload:{}
-        }))
+            payload:{}}))
+        return window.location='/home'
     }).catch(error=>{
         dispatch({
             type:Types.LOGIN_ERROR,
@@ -28,13 +34,14 @@ export const LOGIN = (data) => dispatch=> {
 export const REGISTRATION = (data) =>dispatch=>{
     axios.post(API_URL.REGISTRATION,data).then(res=>{
          dispatch({
-            type:Types.REGISTRATION,
-            payload:res.data
+             type:Types.REGISTRATION,
+             payload:res.data
         })
-        return dispatch(emptyMessage({
+        dispatch(emptyMessage({
             type:Types.EMPTY_USER_SUCCESS,
             payload:{}
         }))
+        return window.location='/login'
     }).catch(error=>{
             dispatch({
                 type:Types.REGISTRATION_ERROR,
@@ -57,6 +64,7 @@ export const LOGIN_SUCCESS = () =>{
    }
 }
 
+
 export const REGISTRATION_SUCCESS = () =>{
     return{
         type:Types.REGISTRATION_SUCCESS,
@@ -71,6 +79,41 @@ export const REGISTRATION_ERROR = ()=>{
         payload:[]
     }
 }
+
+
+export const Logout = ()=>dispatch=>{
+    axios.post(API_URL.LOGOUT).then(res=>{
+      dispatch({
+          type:Types.LOGOUT,
+          payload:res.data
+       })
+     localStorage.removeItem('token')
+    }).catch(error=>{
+        dispatch({
+            type:Types.LOGOUT_ERROR,
+            payload:error.response.data
+        })
+    })
+}
+
+
+export const getRefreshToken =(refreshToken)=> dispatch=>{
+    axios.post(API_URL.GET_TOKEN_WITH_REFRESH_TOKEN,{
+        refreshToken:refreshToken
+    }).then(res=>{
+        dispatch({
+            type:Types.GET_TOKEN_WITH_REFRESH_TOKEN,
+            payload:res.data.data
+        })
+    }).catch(error=>{
+        dispatch({
+            type:Types.REFRESH_TOKEN_ERROR,
+            payload:error.response.data
+        })
+    })
+}
+
+
 
 
 
