@@ -5,6 +5,7 @@ import Forgotpassword from '../pages/Forgotpassword';
 import Profile from '../pages/Profile'
 import Member from '../pages/Member';
 import Groups from '../pages/Groups';
+import CreateGroup from '../pages/CreateGroup';
 
 const config=[
     {
@@ -22,6 +23,10 @@ const config=[
     {
         path:'/groups',
         component:Groups
+    },
+    {
+        path:'/create-group',
+        component:CreateGroup
     }
 ]
 

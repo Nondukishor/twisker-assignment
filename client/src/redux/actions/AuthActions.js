@@ -2,7 +2,6 @@ import axios from 'axios';
 import * as Types from '../constants/AuthConstant';
 import {emptyMessage} from './GlobalActions';
 import API_URL from '../../app/routes/Api';
-import {setToken} from '../../app/hooks/token'
 export const LOGIN = (data) => dispatch=> {
     axios.post(API_URL.LOGIN,data).then(res=>{
         dispatch({

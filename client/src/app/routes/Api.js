@@ -2,11 +2,9 @@ class API{
     constructor(){
      this.api ='http://localhost:3333/api'
     }
-
     get LOGIN(){
         return `${this.api}/login` 
     }
-
     get REGISTRATION(){
         return `${this.api}/registration`
     }
@@ -24,6 +22,12 @@ class API{
     }
     get GET_TOKEN_WITH_REFRESH_TOKEN(){
         return `${this.api}/refresh-token`
+    }
+    get CREATE_GROUP(){
+        return `${this.api}/groups`
+    }
+    get FETCH_GROUPS(){
+        return `${this.api}/groups`
     }
 
 

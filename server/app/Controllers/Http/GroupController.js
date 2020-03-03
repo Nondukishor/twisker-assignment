@@ -25,7 +25,7 @@ class GroupController {
     }
 
   async store({request,response}){
-      const {member_id,title,group_type,group_type} = request.all()
+      const {member_id,title,member_type,group_type} = request.all()
         try {
             const group = await Group.create({
                 member_id,

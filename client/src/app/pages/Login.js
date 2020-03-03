@@ -34,7 +34,7 @@ const Login = (props) => {
                          {error && <div className="text-center"><span className="errors">{error.message}</span></div>}
                  
                   <div className="text-center">
-                  Don't Have a account?<Link to='/register'> Register</Link>
+                  Don't Have a account?<Link to='/registration'> Register</Link>
                   <br/>
                   Don't Worry?<Link to='/forgot-password'> Forgot password? </Link>
                   <br/>
