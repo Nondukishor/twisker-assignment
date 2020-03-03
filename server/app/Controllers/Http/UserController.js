@@ -73,7 +73,6 @@ class UserController {
 
   async loginWithRefreshToken({auth,response,request}){
     const {refreshToken} = request.post()
-    console.log(refreshToken)
     try {
       const loginWithRefreshToken = await auth.generateForRefreshToken(refreshToken,true)
        if(loginWithRefreshToken){
@@ -93,24 +92,6 @@ class UserController {
     }
   }
 
-  async logout ({auth,response}){
-    try {
-      const logout = await auth.logout()
-      if(logout){
-        return response.status(200).json({
-          success:true,
-          type:'success',
-          message:"Logged out"
-        })
-      }
-    } catch (error) {
-      return response.status(500).json({
-          success:false,
-          type:'danger',
-          message:"Server Error"
-      })
-    }
-  }
 }
 
 module.exports = UserController

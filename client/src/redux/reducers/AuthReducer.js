@@ -59,7 +59,11 @@ function AuthReducer(state=initialState,actions) {
                 token:null,
                 data:{},
                 error:{},
-                success:{}
+                success:{
+                    success:true,
+                    type:'danger',
+                    message:"Logout Successfully"
+                }
             }
         case Types.LOGOUT_ERROR:
             return{

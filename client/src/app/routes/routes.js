@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {BrowserRouter as Router ,Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router ,Switch, Route, Redirect} from 'react-router-dom';
 import * as Types from '../../redux/constants/AuthConstant';
 import {getRefreshToken} from '../../redux/actions/AuthActions'
 import config from './RouteConfig';
@@ -9,7 +9,9 @@ const Routes = ()=>{
     const [users] = useState(()=>JSON.parse(localStorage.getItem('token')))
     const {user:{token},post:{success:{error}}} = store.getState()
     useEffect(()=>{
-     store.dispatch(getRefreshToken(users.refreshToken)) 
+     if(users){
+        store.dispatch(getRefreshToken(users.refreshToken)) 
+     }
     },[token,error])
    return(
     <Router>
