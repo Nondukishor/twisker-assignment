@@ -4,6 +4,7 @@ const initialState ={
     data:null,
     error:null,
     success:null,
+    ...JSON.parse(localStorage.getItem('state')).groups
 }
 const GroupReducer = (state=initialState,actions) => {
     const {type,payload} = actions
@@ -22,6 +23,11 @@ const GroupReducer = (state=initialState,actions) => {
             return{
                 ...state,
                 error:payload
+            }
+        case Types.GET_GROUP_POSTS:
+            return{
+                ...state,
+                data:payload
             }
         default: 
            return state

@@ -15,7 +15,7 @@ const Member = (props) => {
       <Container>
           <div className="text-center"><h2>Twisker Member</h2></div>
           <Row>
-              {member ? member.map(member=><Col xs={4}><MemberCard image={member2} alt="member icon" title={member.username}/></Col>) :''}
+              {member && member.map((member,index)=><Col key={index} xs={4}><MemberCard  image={member2} alt="member icon" title={member.username} id={member.id}/></Col>)}
           </Row>
       </Container>
     );

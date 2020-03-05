@@ -6,9 +6,17 @@ import {createPost} from '../../../redux/actions/PostActions';
 import { connect } from 'react-redux';
 
 const PostFrom = (props) => {
-    const { create }=props
-    const [state,setState] = useState({author_id:1,group_id:null,title:'',due_date:new Date(),post:'',post_type:'Public'});
+    const { create,user }=props
+    const [state,setState] = useState({
+      author_id:user.id,
+      group_id: (props.group_id ? props.group_id : null),
+      title:'',
+      due_date:new Date(),
+      post:'',
+      post_type:'PUBLIC'});
+
     const handleChange = (e)=>setState({...state,[e.target.name]:e.target.value})
+
     const handleSubmit=(e)=>{
         e.preventDefault();
         return create(state);
@@ -28,9 +36,9 @@ const PostFrom = (props) => {
          <FormGroup>
            <DatePicker selected={state.due_date} onChange={date => setState({...state,due_date:date})}  />
          </FormGroup>
-         <select name="post_type" onChange={handleChange} value={state.post_type}>
-           <option>Public</option>
-           <option>Private</option>
+         <select  name="post_type" onChange={handleChange} value={state.post_type}>
+           <option value="PUBLIC">Public</option>
+           <option value="PRIVATE">Private</option>
          </select>
           
          <div className="text-right">
@@ -39,6 +47,11 @@ const PostFrom = (props) => {
         </Form>
     );
 }
+const mapStateToProps = state =>{
+  return{
+    user: state.user.data
+  }
+}
 
 const mapDispatchToProps = dispatch =>{
     return{
@@ -46,4 +59,4 @@ const mapDispatchToProps = dispatch =>{
     }
   }
 
-export default connect(null,mapDispatchToProps)(PostFrom);
+export default connect(mapStateToProps,mapDispatchToProps)(PostFrom);

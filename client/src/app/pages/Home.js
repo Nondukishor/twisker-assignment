@@ -17,7 +17,14 @@ const Home = (props) => {
                   <div className="mt-5">
                     <Row>
                       <Col xs={4}>
-                      <ProfileCard/>
+                      <ProfileCard 
+                         id={props.user.data && props.user.data.id}
+                         first_name={props.user.data && props.user.data.first_name}
+                         last_name={props.user.data && props.user.data.last_name}
+                         username={props.user.data && props.user.data.username}
+                         email={props.user.data && props.user.data.email}
+                         post={props.user.data && props.user.data.present_post}
+                      />
                       </Col>
                       <Col xs={8}>
                        <ProfileNav feed={<Feeds/>}/>
@@ -33,7 +40,8 @@ const Home = (props) => {
 
 const mapStateToProps=state=>{
   return{
-    success:state.post.success
+    success:state.post.success,
+    user: state.user.data
   }
 }
 

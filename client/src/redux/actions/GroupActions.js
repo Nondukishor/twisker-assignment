@@ -1,14 +1,15 @@
-import React from 'react';
 import axios from 'axios';
 import * as Types from '../constants/GroupConstant';
 import API_URL from '../../app/routes/Api';
-import { setToken } from '../../app/hooks/token';
+import { setToken,getToken } from '../../app/hooks/token';
 
 export const createNewGroup =(data)=> dispatch=>{
-    axios.post(API_URL.CREATE_GROUP).then(res=>{
+    getToken()
+    setToken()
+    axios.post(API_URL.CREATE_GROUP,data).then(res=>{
         dispatch({
             type:Types.CREATE_GROUP,
-            payload:res.data.data
+            payload:res.data
         })
     }).catch(error=>{
         dispatch({
@@ -19,6 +20,7 @@ export const createNewGroup =(data)=> dispatch=>{
 }
 
 export const groups=()=>dispatch=>{
+    getToken()
     setToken()
     axios.get(API_URL.FETCH_GROUPS).then(res=>{
         dispatch({
@@ -33,3 +35,22 @@ export const groups=()=>dispatch=>{
     })
     
 }
+
+
+export const groupPost = (id) => dispatch=>{
+   getToken()
+   setToken();
+   axios.get(API_URL.GET_GROUP_POSTS(id)).then(res=>{
+       dispatch({
+          type: Types.GET_GROUP_POSTS,
+          payload:res.data
+       })
+   }).catch(error=>{
+       dispatch({
+           type:Types.ERROR,
+           payload:error.response.data
+       })
+   })
+}
+
+

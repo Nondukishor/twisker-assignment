@@ -2,7 +2,8 @@ import axios from 'axios';
 import * as Types from '../constants/AuthConstant';
 import {emptyMessage} from './GlobalActions';
 import API_URL from '../../app/routes/Api';
-export const LOGIN = (data) => dispatch=> {
+import {getToken} from '../../app/hooks/token'
+export const LOGIN = (data) => dispatch => {
     axios.post(API_URL.LOGIN,data).then(res=>{
         dispatch({
             type:Types.LOGIN,
@@ -14,7 +15,8 @@ export const LOGIN = (data) => dispatch=> {
         })
         dispatch(emptyMessage({
             type:Types.EMPTY_USER_SUCCESS,
-            payload:{}}))
+            payload:{}})
+            )
         return window.location='/'
     }).catch(error=>{
         dispatch({
@@ -31,11 +33,12 @@ export const LOGIN = (data) => dispatch=> {
 
 
 export const REGISTRATION = (data) =>dispatch=>{
+
     axios.post(API_URL.REGISTRATION,data).then(res=>{
          dispatch({
              type:Types.REGISTRATION,
              payload:res.data
-        })
+         })
         dispatch(emptyMessage({
             type:Types.EMPTY_USER_SUCCESS,
             payload:{}
@@ -64,6 +67,9 @@ export const LOGIN_SUCCESS = () =>{
 }
 
 
+
+
+
 export const REGISTRATION_SUCCESS = () =>{
     return{
         type:Types.REGISTRATION_SUCCESS,
@@ -81,7 +87,8 @@ export const REGISTRATION_ERROR = ()=>{
 
 
 export const Logout = ()=>dispatch=>{
-    localStorage.removeItem('token')
+    getToken()
+    sessionStorage.removeItem('token')
       dispatch({
           type:Types.LOGOUT,
           payload:{}

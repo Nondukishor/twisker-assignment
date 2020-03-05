@@ -29,6 +29,9 @@ class API{
     get FETCH_GROUPS(){
         return `${this.api}/groups`
     }
+     GET_GROUP_POSTS(id){
+        return `${this.api}/groups-post/${id}`
+    }
 
 
 }

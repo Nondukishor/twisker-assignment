@@ -6,7 +6,7 @@ import Profile from '../pages/Profile'
 import Member from '../pages/Member';
 import Groups from '../pages/Groups';
 import CreateGroup from '../pages/CreateGroup';
-
+import GroupView from '../pages/GroupView'
 const config=[
     {
         path:'/',
@@ -21,13 +21,18 @@ const config=[
         component:Member
     },
     {
+        path:'/group/:id',
+        component:GroupView
+    },
+    {
         path:'/groups',
         component:Groups
     },
     {
         path:'/create-group',
         component:CreateGroup
-    }
+    },
+    
 ]
 
 

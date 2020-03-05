@@ -1,8 +1,9 @@
 import axios from "axios"
 import API_URL from '../../app/routes/Api';
 import * as Types from '../constants/PostConstant';
-import {setToken} from '../../app/hooks/token'
+import {setToken, getToken} from '../../app/hooks/token'
 export const Posts =()=>dispatch=>{
+    getToken()
     setToken()
     axios.get(API_URL.POSTS).then(res=>{
         dispatch({
@@ -19,6 +20,8 @@ export const Posts =()=>dispatch=>{
 
 
 export const createPost =(data)=>dispatch=>{
+    getToken()
+    setToken()
     axios.post(API_URL.CREATE_POST,data).then(res=>{
       dispatch({
          type:Types.POST_SUCCESS,

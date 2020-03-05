@@ -1,16 +1,23 @@
 import * as Types from '../constants/AuthConstant';
+import decode from 'jwt-decode';
 
-const initialState = { token:null,data:{},error:{},success:{} }
+const initialState = { 
+    token:{},
+    data:{},
+    error:{},
+    success:{},
+    ...JSON.parse(localStorage.getItem('state')).auth
+}
 
 function AuthReducer(state=initialState,actions) {
     const { type,payload }= actions;
-    
     switch(type){
         case Types.LOGIN:
-           localStorage.setItem('token',JSON.stringify(payload))
+            sessionStorage.setItem('token',JSON.stringify(payload))
             return{
                 ...state,
-                token:payload
+                token:payload,
+                data:decode(payload.token)
                }
         case Types.LOGIN_SUCCESS:
             delete payload.data
@@ -44,10 +51,11 @@ function AuthReducer(state=initialState,actions) {
                 token:payload
             }
         case Types.GET_TOKEN_WITH_REFRESH_TOKEN:
-            localStorage.setItem('token',JSON.stringify(payload))
+            sessionStorage.setItem('token',JSON.stringify(payload))
             return{
                 ...state,
-                token:payload
+                token:payload,
+                data:decode(payload.token)
             }
         case Types.EMPTY_USER_ERRORS:
             return{
