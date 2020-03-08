@@ -5,7 +5,9 @@ class GroupController {
 
     async index({response}){
         try {
+
             const groups = await Group.query().with('members').with('posts').fetch()
+
             if(groups){
                 return response.status(200).json({
                     success:true,
@@ -24,8 +26,31 @@ class GroupController {
         }
     }
 
+
+
+    async groupPost({params,response}){
+        try {
+            const groups = await Group.query().with('members').with('posts').where('id',params.id).fetch()
+
+            if(groups){
+                return response.status(200).json({
+                    success:true,
+                    type:'success',
+                    message:'All Groups populated successfully',
+                    data:groups
+                })
+            }
+        } catch (error) {
+           return response.status(500).json({
+               success:true,
+               type:"danger",
+               message:"server Error"
+           }) 
+        }
+    }
+
   async store({request,response}){
-      const {member_id,title,member_type,group_type} = request.all()
+      const {title,group_type,member_id,member_type} = request.all()
         try {
             const group = await Group.create({
                 member_id,
@@ -41,7 +66,11 @@ class GroupController {
                 })
             }
         } catch (error) {
-            
+           return response.status(500).json({
+               success:false,
+               type:'danger',
+               message:"Server Error"
+           }) 
         }
   }
 

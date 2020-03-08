@@ -12,11 +12,8 @@ const Registration = (props) => {
     const {registration,error} = props
     const password = useRef({});
     password.current = watch("password", "");
-
-    const onSubmit = data =>{
-      console.log(data)
-      registration(data)
-    }
+    const onSubmit = data =>registration(data)
+    
    
     return (
         <Container>

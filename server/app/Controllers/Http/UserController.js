@@ -29,9 +29,9 @@ class UserController {
  
  
   async registration({ request, response }) {
-    const {username,email,password} = request.all()
+    const {first_name,last_name,username,email,password,present_post} = request.all()
     try {
-      const user = await User.create({username,email,password})
+      const user = await User.create({first_name,last_name,username,email,password,present_post})
       if(user){
         return response.status(200).json({
         success:true,

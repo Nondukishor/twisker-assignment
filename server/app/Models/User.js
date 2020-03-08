@@ -15,14 +15,12 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password)
       }
     })
-
-    this.addHook('afterCreate', 'GroupHook.addMember')
   }
 
   
 
   static get hidden () {
-    return ['password']
+    return ['password','created_at','updated_at']
   }
  
   tokens () {

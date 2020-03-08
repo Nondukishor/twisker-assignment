@@ -12,6 +12,7 @@ const Login = (props) => {
     useEffect(()=> isLoggedIn()? props.history.goBack() : '',[])
     const {login,error} = props;
     const onSubmit = data =>login(data)
+    
 
     return (
         <Container>

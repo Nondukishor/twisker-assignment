@@ -7,6 +7,7 @@ import {MemberActions} from '../../redux/actions/MemberActions'
 
 const Member = (props) => {
    const {members,member}= props;
+   
     useEffect(()=>{
      return members()
     },[members])

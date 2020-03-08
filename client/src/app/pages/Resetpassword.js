@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import '../assets/scss/user.scss';
 
-const Resetpassword = () => {
+const ResetPassword = () => {
     const { register, handleSubmit, watch, errors } = useForm()
     const onSubmit = data => { console.log(data) }
     return (
@@ -42,4 +42,4 @@ const Resetpassword = () => {
     );
 }
 
-export default Resetpassword;
+export default ResetPassword;

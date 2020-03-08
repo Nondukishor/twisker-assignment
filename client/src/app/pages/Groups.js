@@ -8,13 +8,12 @@ import { groups } from '../../redux/actions/GroupActions';
 
 
 const Groups = (props) => {
-  const {allGroups,fetchGroup} =props
-  const fetchAllGroups = async ()=> await fetchGroup()
+  const {fetchGroup,allGroups} =props
+  console.log(allGroups)
   useEffect(()=>{
-    fetchAllGroups()
-  },[fetchAllGroups])
-  console.log('groups',allGroups)
-
+    fetchGroup()
+  },[fetchGroup])
+  
     return (
         <Container>
           <div className="text-center">
@@ -22,16 +21,16 @@ const Groups = (props) => {
             <Link to="/create-group" >Create a your own group</Link>
           </div>
           <Row>
-              {allGroups && allGroups.data.map((group,index)=><Col key={index} xs={4}>
+              {allGroups ? allGroups.map((group,index)=><Col key={index} xs={4}>
                 <GroupCard image={GroupIcon} alt="Group icon" title={group.title} id={group.id}/>
-              </Col>)}
+              </Col>):""}
           </Row>
       </Container>
     );
 }
 const mapStateToProps = state =>{
   return{
-   allGroups: state.groups
+   allGroups: state.groups.data
   }
 }
 const mapDispatchToProps = dispatch =>{

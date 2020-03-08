@@ -34,6 +34,7 @@ Route.group(()=>{
   Route.resource('/comments','CommentController')
   Route.resource('/reply','ReplayController')
   Route.resource('/groups','GroupController')
+  Route.get('/groups-post/:id','GroupController.groupPost')
 }).prefix('api').middleware(['auth:jwt'])
 
 

@@ -18,8 +18,7 @@ export const getToken=()=>{
     window.location='/login'
   }else if(auth.token){
      const user = decode(auth.token)
-     const now = new Date().getTime()
-    //  console.log(user.exp<now, 'deference', now-user.exp)
+     const now = new Date().getTime()/1000;
      if(user.exp < now){
       store.dispatch(getRefreshToken(auth.refreshToken))
      }

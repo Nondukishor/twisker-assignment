@@ -6,11 +6,25 @@ import Profile from '../pages/Profile'
 import Member from '../pages/Member';
 import Groups from '../pages/Groups';
 import CreateGroup from '../pages/CreateGroup';
-import GroupView from '../pages/GroupView'
+import GroupView from '../pages/GroupView';
+
 const config=[
     {
         path:'/',
         component:Home
+    },
+    {
+        path:'/registration',
+        component:Registration
+        
+    },
+    {
+        path:'/login',
+        component:Login
+    },
+    {
+        path:'/forgot-password',
+        component:Forgotpassword
     },
     {
         path:'/profile',
@@ -32,31 +46,9 @@ const config=[
         path:'/create-group',
         component:CreateGroup
     },
+
+  
     
 ]
-
-
-const authRoutes =[
-    {
-        path:'/login',
-        component:Login
-    },
-    {
-        path:'/registration',
-        component:Registration
-    },
-    {
-        path:'/forgot-password',
-        component:Forgotpassword
-    },
-]
-
-
-
-
-config.push(...authRoutes)
-
-
-
 
 export default config;

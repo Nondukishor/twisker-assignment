@@ -25,17 +25,19 @@ const PostFrom = (props) => {
     return (
         <Form className="mb-3" onSubmit={handleSubmit}>
         <Form.Group controlId="post" className="mt-2 mb-0">
-         <Form.Label>Give a title for your post</Form.Label>
+              <Form.Label>Give a title for your post</Form.Label>
              <Form.Control type="text" name="title" onChange={handleChange} value={state.title}/>
          </Form.Group>
-        <Form.Group controlId="post">
-         <Form.Label>Write your Post</Form.Label>
+
+         <Form.Group controlId="post">
+             <Form.Label>Write your Post</Form.Label>
              <Form.Control name="post" as="textarea" rows="3" onChange={handleChange} value={state.post}/>
          </Form.Group>
 
          <FormGroup>
-           <DatePicker selected={state.due_date} onChange={date => setState({...state,due_date:date})}  />
+           <DatePicker className={'form-control'} selected={state.due_date} onChange={date => setState({...state,due_date:date})}  />
          </FormGroup>
+
          <select  name="post_type" onChange={handleChange} value={state.post_type}>
            <option value="PUBLIC">Public</option>
            <option value="PRIVATE">Private</option>

@@ -74,7 +74,7 @@ module.exports = {
     options: {
       secret: Env.get('APP_KEY'),
       algorithm: 'HS384',
-      expiresIn:5*60,
+      expiresIn:'5m',
     }
   },
 
