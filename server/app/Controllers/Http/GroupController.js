@@ -5,9 +5,7 @@ class GroupController {
 
     async index({response}){
         try {
-
-            const groups = await Group.query().with('members').with('posts').fetch()
-
+            const groups = await Group.all()
             if(groups){
                 return response.status(200).json({
                     success:true,
@@ -29,9 +27,9 @@ class GroupController {
 
 
     async groupPost({params,response}){
+        const {id} = params
         try {
-            const groups = await Group.query().with('members').with('posts').where('id',params.id).fetch()
-
+            const groups = await Group.query().with('members').with('posts',builder=>builder.with('users')).where('id',id).fetch()
             if(groups){
                 return response.status(200).json({
                     success:true,
@@ -48,6 +46,8 @@ class GroupController {
            }) 
         }
     }
+
+
 
   async store({request,response}){
       const {title,group_type,member_id,member_type} = request.all()

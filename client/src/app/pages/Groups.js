@@ -4,16 +4,17 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import GroupCard from '../../components/dump-components/content-card/ContentCard';
 import GroupIcon from '../assets/img/group-icon.png';
-import { groups } from '../../redux/actions/GroupActions';
+import { fetchGroups } from '../../redux/actions/GroupActions';
 
 
 const Groups = (props) => {
-  const {fetchGroup,allGroups} =props
-  console.log(allGroups)
+
+  const {fetchAllGroup,allGroups} =props
+
   useEffect(()=>{
-    fetchGroup()
-  },[fetchGroup])
-  
+   fetchAllGroup()
+  },[fetchAllGroup])
+
     return (
         <Container>
           <div className="text-center">
@@ -21,9 +22,13 @@ const Groups = (props) => {
             <Link to="/create-group" >Create a your own group</Link>
           </div>
           <Row>
-              {allGroups ? allGroups.map((group,index)=><Col key={index} xs={4}>
-                <GroupCard image={GroupIcon} alt="Group icon" title={group.title} id={group.id}/>
-              </Col>):""}
+              {allGroups && allGroups.map((group,index)=><Col key={index} xs={4}>
+                <GroupCard
+                 image={GroupIcon} 
+                 alt="Group icon" 
+                 title={group.title} 
+                 id={group.id}/>
+              </Col>)}
           </Row>
       </Container>
     );
@@ -35,7 +40,7 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch =>{
   return{
-    fetchGroup:()=>dispatch(groups())
+    fetchAllGroup:()=>dispatch(fetchGroups())
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Groups);

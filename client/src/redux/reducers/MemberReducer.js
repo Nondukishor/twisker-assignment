@@ -1,6 +1,7 @@
 import * as Types from '../constants/MemberConstant';
+const member =JSON.parse(localStorage.getItem('state'))? JSON.parse(localStorage.getItem('state')).member :{}
 const initialState={
-    ...JSON.parse(localStorage.getItem('state')).member
+    ...member
 }
 const MemberReducer = (state=initialState, actions) => {
     const {type,payload} = actions;

@@ -32,6 +32,9 @@ class API{
      GET_GROUP_POSTS(id){
         return `${this.api}/groups-post/${id}`
     }
+    get LIKE(){
+        return `${this.api}/likes`
+    }
 
 
 }

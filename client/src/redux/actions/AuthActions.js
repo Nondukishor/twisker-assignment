@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as Types from '../constants/AuthConstant';
 import {emptyMessage} from './GlobalActions';
 import API_URL from '../../app/routes/Api';
-import {getToken} from '../../app/hooks/token'
+import {getToken, setToken} from '../../app/hooks/token'
 export const LOGIN = (data) => dispatch => {
     axios.post(API_URL.LOGIN,data).then(res=>{
         dispatch({
@@ -33,7 +33,6 @@ export const LOGIN = (data) => dispatch => {
 
 
 export const REGISTRATION = (data) =>dispatch=>{
-
     axios.post(API_URL.REGISTRATION,data).then(res=>{
          dispatch({
              type:Types.REGISTRATION,
@@ -86,14 +85,14 @@ export const REGISTRATION_ERROR = ()=>{
 }
 
 
-export const Logout = ()=>dispatch=>{
-    getToken()
-    sessionStorage.removeItem('token')
+export const Logout = () =>dispatch=>{
+    sessionStorage.removeItem('token');
+    localStorage.removeItem('state');
       dispatch({
           type:Types.LOGOUT,
           payload:{}
        })
-     window.location='/'
+     window.location='/login'
 }
 
 

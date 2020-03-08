@@ -34,3 +34,22 @@ export const createPost =(data)=>dispatch=>{
         })
     })
 }
+
+
+
+export const Like =(data)=>dispatch=>{
+    getToken()
+    setToken()
+    axios.post(API_URL.LIKE,data)
+    .then(res=>{
+        return dispatch({
+            type:Types.LIKE,
+            payload:res.data
+        })
+    }).catch(error=>{
+        return dispatch({
+            type:Types.LIKE_ERROR,
+            payload:error.response.data
+        })
+    })
+}

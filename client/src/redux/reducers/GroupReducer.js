@@ -1,11 +1,12 @@
 import * as Types from '../constants/GroupConstant';
+const groups = JSON.parse(localStorage.getItem('state')) ? JSON.parse(localStorage.getItem('state')).groups : {}
 const initialState ={
     fetch:false,
     data:null,
     error:null,
     success:null,
-    group_post:null,
-    ...JSON.parse(localStorage.getItem('state')).groups
+    single_group:null,
+    ...groups
 }
 const GroupReducer = (state=initialState,actions) => {
     const {type,payload} = actions
@@ -25,10 +26,10 @@ const GroupReducer = (state=initialState,actions) => {
                 ...state,
                 error:payload
             }
-        case Types.GET_GROUP_POSTS:
+        case Types.FETCH_GROUPS_BY_ID:
             return{
                 ...state,
-                group_post:payload
+                single_group:payload
             }
         default: 
            return state

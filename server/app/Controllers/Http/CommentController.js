@@ -6,6 +6,7 @@ class CommentController {
   async index ({response}) {
     try {
       const comment = await Comment.query().with('post').with('commenter').fetch()
+      
       if(comment){
         return response.status(200).json({
           success:true,

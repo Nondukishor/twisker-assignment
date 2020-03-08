@@ -27,7 +27,7 @@ const Home = (props) => {
                       />
                       </Col>
                       <Col xs={8}>
-                       <ProfileNav feed={<Feeds/>}/>
+                       <ProfileNav feed={<Feeds />}/>
                       </Col>
                     </Row>
                   </div>

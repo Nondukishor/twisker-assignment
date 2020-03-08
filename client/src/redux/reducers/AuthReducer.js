@@ -1,12 +1,12 @@
 import * as Types from '../constants/AuthConstant';
 import decode from 'jwt-decode';
-
+const auth = JSON.parse(localStorage.getItem('state'))? JSON.parse(localStorage.getItem('state')).auth : {}
 const initialState = { 
     token:{},
     data:{},
     error:{},
     success:{},
-    ...JSON.parse(localStorage.getItem('state')).auth
+    ...auth
 }
 
 function AuthReducer(state=initialState,actions) {
