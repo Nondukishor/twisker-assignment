@@ -4,9 +4,15 @@ const Logger = use('Logger')
 
 class PostController {
  
-  async index ({ request, response, view }) {
+  async index ({ request, response }) {
+    const {user_id} = request.all()
     try {
-      const post = await Post.query().with('users',builder=>builder.select(['id','username','email'])).orderBy('id', 'desc').fetch()
+      const post = await Post.query()
+      .with('users',builder=>
+       builder.select(['id','username','email']))
+       .where('user_id',user_id)
+        .orderBy('id', 'desc')
+         .fetch()
       return response.status(200).json({
         success:true,
         type:"success",
