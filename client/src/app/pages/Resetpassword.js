@@ -17,11 +17,9 @@ const ResetPassword = () => {
                <h3 className="text-center">LOG IN</h3>
                <Form onSubmit={handleSubmit(onSubmit)}>
                 
-
                  <Form.Group controlId="password">
-                         <Form.Control name="password" type="password" placeholder="***********" ref={
-                             register({min: 6, max: 12, required:true })}/>
-                         {errors.password && <span className="errors">This field is required</span>}
+                    <Form.Control name="password" type="password" placeholder="***********" ref={register({min: 6, max: 12, required:true })}/>
+                    {errors.password && <span className="errors">This field is required</span>}
                  </Form.Group>
                  
                  

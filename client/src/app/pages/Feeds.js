@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 import PostCard from '../components/dump-components/PostCard/PostCard';
 import PostFrom from '../components/dump-components/Post/PostFrom';
 import {Posts} from '../redux/actions/PostActions'
-const Feeds = ({posts,post}) => {
+const Feeds = ({posts,post,id}) => {
     
     useEffect(()=>{
-     post()
+     post(id)
     },[post])
 
     return (<>
@@ -28,7 +28,7 @@ const mapStateToProps=state=>{
 }
 const mapDispatchToProps =(dispatch)=>{
     return{
-        post:()=>dispatch(Posts())
+        post:(id)=>dispatch(Posts(id))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Feeds);

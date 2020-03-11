@@ -13,6 +13,7 @@
     "jwt-decode": "^2.2.0",
     "mysql": "^2.18.1",
     "prop-types": "^15.7.2",
-    "react-icons": "^3.9.0"
+    "react-icons": "^3.9.0",
+    "redux-logger": "^3.0.6"
   }
 }

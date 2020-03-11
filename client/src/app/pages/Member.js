@@ -1,15 +1,14 @@
 import React,{useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Container,Row,Col,Card} from 'react-bootstrap';
+import {Container,Row,Col} from 'react-bootstrap';
 import MemberCard from '../components/dump-components/content-card/ContentCard';
 import member2 from '../assets/img/member2.jpg';
 import {MemberActions} from '../redux/actions/MemberActions'
 
 const Member = (props) => {
    const {members,member}= props;
-   
     useEffect(()=>{
-     return members()
+      members()
     },[members])
 
     return (

@@ -2,10 +2,10 @@ import axios from "axios"
 import API_URL from '../../routes/Api';
 import * as Types from '../constants/PostConstant';
 import {setToken, getToken} from '../../hooks/token'
-export const Posts =()=>dispatch=>{
+export const Posts =(id)=>dispatch=>{
     getToken()
     setToken()
-    axios.get(API_URL.POSTS).then(res=>{
+    axios.get(API_URL.POSTS,{user_id:id}).then(res=>{
         dispatch({
             type:Types.POSTS,
             payload:res.data.data

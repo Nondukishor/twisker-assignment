@@ -3,7 +3,6 @@ import {Card,Button,Image} from 'react-bootstrap';
 import profile from './profile.png'
 import {FaHtml5,FaMapMarkerAlt,FaUserFriends} from 'react-icons/fa'
 const ProfileCard = (props) => {
-    console.log(props)
     return (
     <Card style={{ width: '20rem' }}>
     <div className="text-center mt-3">

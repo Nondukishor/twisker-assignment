@@ -1,6 +1,8 @@
 import * as Types from '../constants/AuthConstant';
 import decode from 'jwt-decode';
+
 const auth = JSON.parse(localStorage.getItem('state'))? JSON.parse(localStorage.getItem('state')).auth : {}
+
 const initialState = { 
     token:{},
     data:{},

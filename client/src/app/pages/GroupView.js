@@ -6,8 +6,6 @@ import PostFrom from '../components/dump-components/Post/PostFrom';
 import PostCard from '../components/dump-components/PostCard/PostCard';
 import {fetchGroupByID} from '../redux/actions/GroupActions';
 import '../assets/scss/group-post.scss';
-import { getToken } from '../hooks/token';
-
 function GroupView(props) {
     const {fetchGroupsByID,single_group} = props
     const {id} = useParams()
