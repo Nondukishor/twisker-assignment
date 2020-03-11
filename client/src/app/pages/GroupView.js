@@ -2,9 +2,9 @@ import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 import {useParams} from 'react-router-dom'
 import {Container,Row,Col} from 'react-bootstrap';
-import PostFrom from '../../components/dump-components/Post/PostFrom';
-import PostCard from '../../components/dump-components/PostCard/PostCard';
-import {fetchGroupByID} from '../../redux/actions/GroupActions';
+import PostFrom from '../components/dump-components/Post/PostFrom';
+import PostCard from '../components/dump-components/PostCard/PostCard';
+import {fetchGroupByID} from '../redux/actions/GroupActions';
 import '../assets/scss/group-post.scss';
 import { getToken } from '../hooks/token';
 

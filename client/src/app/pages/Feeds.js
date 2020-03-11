@@ -1,12 +1,12 @@
 import React,{useEffect} from 'react';
 import {connect} from 'react-redux'
-import PostCard from '../../components/dump-components/PostCard/PostCard';
-import PostFrom from '../../components/dump-components/Post/PostFrom';
-import {Posts} from '../../redux/actions/PostActions'
+import PostCard from '../components/dump-components/PostCard/PostCard';
+import PostFrom from '../components/dump-components/Post/PostFrom';
+import {Posts} from '../redux/actions/PostActions'
 const Feeds = ({posts,post}) => {
     
     useEffect(()=>{
-    return async()=>await post()
+     post()
     },[post])
 
     return (<>

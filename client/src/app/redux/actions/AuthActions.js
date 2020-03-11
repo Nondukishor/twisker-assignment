@@ -1,18 +1,21 @@
 import axios from 'axios';
 import * as Types from '../constants/AuthConstant';
 import {emptyMessage} from './GlobalActions';
-import API_URL from '../../app/routes/Api';
-import {getToken, setToken} from '../../app/hooks/token'
+import API_URL from '../../routes/Api';
+import {getToken, setToken} from '../../hooks/token';
+
 export const LOGIN = (data) => dispatch => {
     axios.post(API_URL.LOGIN,data).then(res=>{
         dispatch({
             type:Types.LOGIN,
             payload:res.data.data
         })
+        
         dispatch({
             type:Types.LOGIN_SUCCESS,
             payload:res.data
         })
+
         dispatch(emptyMessage({
             type:Types.EMPTY_USER_SUCCESS,
             payload:{}})
@@ -86,6 +89,8 @@ export const REGISTRATION_ERROR = ()=>{
 
 
 export const Logout = () =>dispatch=>{
+    getToken();
+    setToken();
     sessionStorage.removeItem('token');
     localStorage.removeItem('state');
       dispatch({

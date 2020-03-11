@@ -1,7 +1,7 @@
 import axios from 'axios';
 import decode from 'jwt-decode';
-import {getRefreshToken} from '../../redux/actions/AuthActions';
-import store from '../../redux';
+import {getRefreshToken} from '../redux/actions/AuthActions'
+import store from '../redux';
 
 
 export const setToken = () =>{

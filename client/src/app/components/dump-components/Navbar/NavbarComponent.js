@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {Nav,Navbar,Form,Image,Badge, Button} from 'react-bootstrap'
-import './navbar.scss';
-import logo from './icon.png';
 import { FaSearch,FaBell,FaRegEnvelope,FaUserAlt } from 'react-icons/fa';
 import {Logout} from '../../../redux/actions/AuthActions';
-import {isLoggedIn} from '../../../app/hooks/token';
+import {isLoggedIn} from '../../../hooks/token';
+import logo from './icon.png';
+import './navbar.scss';
 
 const NavbarComponent = (props) => {
     return (

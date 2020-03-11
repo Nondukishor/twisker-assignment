@@ -2,7 +2,7 @@ import React from 'react';
 import {Container,Col,Row,Form,Card,Button,Image} from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { connect } from 'react-redux';
-import {createNewGroup} from '../../redux/actions/GroupActions';
+import {createNewGroup} from '../redux/actions/GroupActions';
 import groupLogo from '../assets/img/group-pic.jpg'
 const CreateGroup = (props) => {
     const { register, handleSubmit,errors } = useForm()

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as Types from '../constants/GroupConstant';
-import API_URL from '../../app/routes/Api';
-import { setToken,getToken } from '../../app/hooks/token';
+import API_URL from '../../routes/Api';
+import { setToken,getToken } from '../../hooks/token';
 
 export const createNewGroup =(data)=> dispatch=>{
     getToken()

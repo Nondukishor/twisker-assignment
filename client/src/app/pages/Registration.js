@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import {Form, Container, Row, Col,Button, Card} from 'react-bootstrap';
-import { REGISTRATION } from '../../redux/actions/AuthActions'
+import { REGISTRATION } from '../redux/actions/AuthActions'
 import '../assets/scss/user.scss';
 
 const Registration = (props) => {

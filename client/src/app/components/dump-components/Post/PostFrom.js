@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
+import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker'
-import {Form, Button, FormGroup} from 'react-bootstrap';
+import { Form, Button, FormGroup } from 'react-bootstrap';
 import "react-datepicker/dist/react-datepicker.css";
 import {createPost} from '../../../redux/actions/PostActions';
-import { connect } from 'react-redux';
 
 const PostFrom = (props) => {
     const { create,user }=props

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Form, Container, Row, Col,Button, Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import {LOGIN} from '../../redux/actions/AuthActions';
+import {LOGIN} from '../redux/actions/AuthActions';
 import '../assets/scss/user.scss';
 import {isLoggedIn} from '../hooks/token'
 const Login = (props) => {

@@ -1,11 +1,11 @@
 import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import ProfileCard from '../../components/dump-components/ProfileCard/ProfileCard';
-import ProfileNav from '../../components/dump-components/nav/ProfileNav';
+import ProfileCard from '../components/dump-components/ProfileCard/ProfileCard';
+import ProfileNav from '../components/dump-components/nav/ProfileNav';
 import { Container, Row,Col,  } from 'react-bootstrap';
 import '../assets/scss/home.scss';
 import Feeds from './Feeds';
-import NavbarComponent from '../../components/dump-components/Navbar/NavbarComponent';
+import NavbarComponent from '../components/dump-components/Navbar/NavbarComponent';
 
 const Home = (props) => {
     return (

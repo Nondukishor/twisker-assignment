@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tabs, Tab, Sonnet} from 'react-bootstrap';
+import {Tabs, Tab} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
 import {IconContext} from 'react-icons';
 import {IoMdListBox} from 'react-icons/io';

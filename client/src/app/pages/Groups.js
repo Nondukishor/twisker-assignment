@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import {Container,Row,Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import GroupCard from '../../components/dump-components/content-card/ContentCard';
+import GroupCard from '../components/dump-components/content-card/ContentCard';
 import GroupIcon from '../assets/img/group-icon.png';
-import { fetchGroups } from '../../redux/actions/GroupActions';
+import { fetchGroups } from '../redux/actions/GroupActions';
 
 
 const Groups = (props) => {

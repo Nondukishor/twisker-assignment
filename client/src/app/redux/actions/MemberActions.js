@@ -1,7 +1,7 @@
 import axios from 'axios';
-import API_URL from '../../app/routes/Api';
+import API_URL from '../../routes/Api';
 import * as Types from '../constants/MemberConstant';
-import { setToken, getToken } from '../../app/hooks/token';
+import { setToken, getToken } from '../../hooks/token';
 
 export const MemberActions = () => dispatch =>{
    getToken()
@@ -14,7 +14,7 @@ export const MemberActions = () => dispatch =>{
    }).catch(error=>{
        dispatch({
            type:Types.ERROR,
-           payload:error.response.data
+           payload: error.response.data
        })
    })  
 }

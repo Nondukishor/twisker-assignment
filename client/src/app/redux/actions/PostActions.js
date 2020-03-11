@@ -1,7 +1,7 @@
 import axios from "axios"
-import API_URL from '../../app/routes/Api';
+import API_URL from '../../routes/Api';
 import * as Types from '../constants/PostConstant';
-import {setToken, getToken} from '../../app/hooks/token'
+import {setToken, getToken} from '../../hooks/token'
 export const Posts =()=>dispatch=>{
     getToken()
     setToken()

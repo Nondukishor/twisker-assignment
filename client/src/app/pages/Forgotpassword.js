@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {Form, Container, Row, Col,Button, Card} from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import '../assets/scss/user.scss';

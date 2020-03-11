@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import '../assets/scss/user.scss';
 
 const ResetPassword = () => {
-    const { register, handleSubmit, watch, errors } = useForm()
+    const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => { console.log(data) }
     return (
         <Container>
