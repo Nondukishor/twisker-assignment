@@ -6,7 +6,7 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "cd server && adonis serve --dev",
-    "dev": "concurrently \"yarn server\" \"yarn client\""
+    "start": "concurrently \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "concurrently": "^5.1.0",
