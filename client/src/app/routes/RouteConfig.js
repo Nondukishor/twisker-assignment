@@ -8,47 +8,63 @@ import Groups from '../pages/Groups';
 import CreateGroup from '../pages/CreateGroup';
 import GroupView from '../pages/GroupView';
 
-const config=[
-    {
-        path:'/',
-        component:Home
-    },
+
+const unprotectedRoute=[
+    
     {
         path:'/registration',
-        component:Registration
+        component:Registration,
+        exact:true
         
     },
     {
         path:'/login',
-        component:Login
+        component:Login,
+        exact:true
     },
     {
         path:'/forgot-password',
-        component:Forgotpassword
-    },
+        component:Forgotpassword,
+        exact:true
+    } 
+]
+
+
+
+const protectedRoutes = [
     {
         path:'/profile',
-        component:Profile
+        component:Profile,
+        exact:true
     },
     {
         path:'/member',
-        component:Member
+        component:Member,
+        exact:true
     },
     {
         path:'/group/:id',
-        component:GroupView
+        component:GroupView,
+        exact:true
     },
     {
         path:'/groups',
-        component:Groups
+        component:Groups,
+        exact:true
     },
     {
         path:'/create-group',
-        component:CreateGroup
+        component:CreateGroup,
+        exact:true
     },
-
-  
-    
+    {
+        path:'/',
+        component:Home,
+        exact:true
+    },
 ]
 
-export default config;
+export {
+    unprotectedRoute,
+    protectedRoutes
+};

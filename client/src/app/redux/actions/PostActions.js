@@ -5,14 +5,14 @@ import {setToken, getToken} from '../../hooks/token'
 export const Posts =(id)=>dispatch=>{
     getToken()
     setToken()
-    axios.get(API_URL.POSTS,{user_id:id}).then(res=>{
+    axios.get(API_URL.__GET_USER_POSTS(id)).then(res=>{
         dispatch({
             type:Types.POSTS,
             payload:res.data.data
         })
     }).catch(error=>{
         dispatch({
-            type:Types.POST_SUCCESS,
+            type:Types.POST_ERROR,
             payload:error.response.data
         })
     })

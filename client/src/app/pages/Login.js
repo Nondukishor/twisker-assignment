@@ -5,21 +5,11 @@ import {Link} from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import {LOGIN} from '../redux/actions/AuthActions';
 import '../assets/scss/user.scss';
-import {isLoggedIn} from '../hooks/token';
 
 const Login = (props) => {
     const {history:{goBack}} = props
     const {login,error} = props;
     const { register, handleSubmit,errors } = useForm()
-    const LoggedIn = isLoggedIn()
-
-    useEffect(()=>{ 
-      if(LoggedIn){ 
-         goBack()
-      }
-    },[LoggedIn])
-
-
     const onSubmit = data =>login(data)
     
 

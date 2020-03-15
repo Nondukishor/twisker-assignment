@@ -1,3 +1,1 @@
-export const emptyMessage =(action)=>dispatch=>{
-        return setTimeout(()=>dispatch(action),3000)
-}
+export const emptyMessage =(action)=>dispatch=> setTimeout(()=>dispatch(action),3000)

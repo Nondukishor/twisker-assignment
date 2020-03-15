@@ -3,14 +3,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers/index';
-import storageManager from './middleware/storeManager';
+import {saveToLocalStorage,loadFromLocalStorage} from './reducers/storageManager';
 
 const middleware = [thunk,logger]
 
-const store = createStore(rootReducer,  composeWithDevTools(
+const persistedStore = loadFromLocalStorage()
+
+const store = createStore(rootReducer, persistedStore,  composeWithDevTools(
     applyMiddleware(...middleware)
 ))
 
-store.subscribe(() => storageManager(store.getState()));
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store;

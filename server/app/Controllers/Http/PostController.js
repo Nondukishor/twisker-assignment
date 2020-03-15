@@ -4,13 +4,36 @@ const Logger = use('Logger')
 
 class PostController {
  
-  async index ({ request, response }) {
-    const {user_id} = request.all()
+  async index ({response}) {
     try {
       const post = await Post.query()
       .with('users',builder=>
        builder.select(['id','username','email']))
-       .where('user_id',user_id)
+        .orderBy('id', 'desc')
+         .fetch()
+      return response.status(200).json({
+        success:true,
+        type:"success",
+        message:"Post populated successfully",
+        data:post
+      })
+    } catch (error) {
+      Logger.error(error)
+      return response.status(500).json({
+        success:true,
+        type:'danger',
+        message:"Server Error"
+      })
+    }
+  }
+
+  async userPost ({params, response }) {
+    const {id} = params
+    try {
+      const post = await Post.query()
+      .with('users',builder=>
+       builder.select(['id','username','email']))
+       .where('user_id',id)
         .orderBy('id', 'desc')
          .fetch()
       return response.status(200).json({
@@ -131,6 +154,7 @@ class PostController {
       })
     }
   }
+
 }
 
 module.exports = PostController

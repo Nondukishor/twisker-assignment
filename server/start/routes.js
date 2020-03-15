@@ -30,7 +30,8 @@ Route.group(()=>{
 Route.group(()=>{
   Route.get('/members','UserController.index')
   Route.post('/logout','UserController.logout')
-  Route.resource('/posts/:user_id','PostController')
+  Route.resource('/posts','PostController')
+  Route.get('/get-user-post/:id','PostController.userPost')
   Route.resource('/comments','CommentController')
   Route.resource('/reply','ReplayController')
   Route.resource('/groups','GroupController')

@@ -4,7 +4,6 @@ import {NavLink} from 'react-router-dom';
 import {Nav,Navbar,Form,Image,Badge, Button} from 'react-bootstrap'
 import { FaSearch,FaBell,FaRegEnvelope,FaUserAlt } from 'react-icons/fa';
 import {Logout} from '../../../redux/actions/AuthActions';
-import {isLoggedIn} from '../../../hooks/token';
 import logo from './icon.png';
 import './navbar.scss';
 
@@ -24,8 +23,8 @@ const NavbarComponent = (props) => {
         </Form>
          <NavLink className="nav-link" to="/faq"><FaBell/><sup><Badge variant="warning">2</Badge></sup></NavLink>
          <NavLink className="nav-link" to="/faq"><FaRegEnvelope/><sup><Badge variant="success">2</Badge></sup></NavLink>
-         <NavLink className="nav-link" to={isLoggedIn() ? "/profile" : '/login'}>{ isLoggedIn() ? <FaUserAlt/> : 'Login'}</NavLink>
-         {isLoggedIn() && <Button size='sm' onClick={()=>props.userLogout()}>Logout</Button>}
+         <NavLink className="nav-link" to={'/login'}> <FaUserAlt/></NavLink>
+         {/* {isLoggedIn() && <Button size='sm' onClick={()=>props.userLogout()}>Logout</Button>} */}
         </Navbar>
         );
 }

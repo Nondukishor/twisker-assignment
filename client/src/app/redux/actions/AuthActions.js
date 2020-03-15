@@ -5,6 +5,7 @@ import API_URL from '../../routes/Api';
 import {getToken, setToken} from '../../hooks/token';
 
 export const LOGIN = (data) => dispatch => {
+
     axios.post(API_URL.LOGIN,data).then(res=>{
         dispatch({
             type:Types.LOGIN,
@@ -13,14 +14,14 @@ export const LOGIN = (data) => dispatch => {
         
         dispatch({
             type:Types.LOGIN_SUCCESS,
-            payload:res.data
+            payload:res.data,
         })
 
         dispatch(emptyMessage({
             type:Types.EMPTY_USER_SUCCESS,
             payload:{}})
             )
-        return window.location='/'
+
     }).catch(error=>{
         dispatch({
             type:Types.LOGIN_ERROR,

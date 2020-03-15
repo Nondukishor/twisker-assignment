@@ -13,9 +13,9 @@ export const setToken = () =>{
 }
 
 
-export const isLoggedIn=()=>(JSON.parse(sessionStorage.getItem('token'))) ? true : false;
 
-export const getToken=()=>{
+
+export const getToken = ()=>{
   const auth = JSON.parse(sessionStorage.getItem('token')) ? JSON.parse(sessionStorage.getItem('token')) : null;
   console.log(auth)
   if(!auth){
@@ -24,7 +24,7 @@ export const getToken=()=>{
      const user = decode(auth.token)
      const now = new Date().getTime()/1000;
      const deference = user.exp-now;
-     if(deference<=20){
+     if(deference<20){
        return store.dispatch(getRefreshToken(auth.refreshToken))
      }
    }

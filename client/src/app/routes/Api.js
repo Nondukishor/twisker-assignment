@@ -17,6 +17,11 @@ class API{
     get CREATE_POST(){
         return `${this.api}/posts`
     }
+
+    __GET_USER_POSTS(id){
+        return `${this.api}/get-user-post/${id}`
+    }
+
     get LOGOUT(){
         return `${this.api}/logout`
     }

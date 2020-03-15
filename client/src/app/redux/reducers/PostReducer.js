@@ -1,10 +1,9 @@
 import * as Types from '../constants/PostConstant';
-const posts = JSON.parse(localStorage.getItem('state'))? JSON.parse(localStorage.getItem('state')).post: {}
+
 const initialState={
     data:[],
     success:{},
     error:{},
-    ...posts
 }
 const PostReducer = (state=initialState,actions) => {
     const {type, payload} = actions;
